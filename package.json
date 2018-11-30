@@ -1,5 +1,5 @@
 {
-    "name": "luck-draw_laohuji",
+    "name": "luck-draw",
     "version": "1.0.0",
     "description": "",
     "main": "gulpfile.js",
@@ -8,12 +8,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/zhouhuafei/luck-draw_laohuji.git"
+        "url": "git+https://github.com/zhouhuafei/luck-draw.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/zhouhuafei/luck-draw_laohuji/issues"
+        "url": "https://github.com/zhouhuafei/luck-draw/issues"
     },
-    "homepage": "https://github.com/zhouhuafei/luck-draw_laohuji#readme"
+    "homepage": "https://github.com/zhouhuafei/luck-draw#readme"
 }
