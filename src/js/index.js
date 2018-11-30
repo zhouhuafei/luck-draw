@@ -22,15 +22,15 @@ Game.prototype.init = function () {
             setTimeout(function () {
                 fnLampStop();
                 fnHandleStop();
-            }, 4000);
-        }, 400);
+            }, 3000);
+        }, 600);
     }, 1000);
 
 
     function fnLampMove() {
         timer = setInterval(function () {
             domLamp.classList.toggle('lamp_selected');
-        }, 60);
+        }, 80);
     }
 
     function fnLampStop() {
