@@ -15,7 +15,7 @@ gulp.task('scss', function () {
             cascade: false,
         }))
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(`./dist/css`));
+        .pipe(gulp.dest(`./src/css`));
 });
 
 gulp.task('default', ['scss', 'watch']);

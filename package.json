@@ -1,19 +1,25 @@
 {
-    "name": "luck-draw_scroll",
-    "version": "1.0.0",
-    "description": "",
-    "main": "gulpfile.js",
-    "scripts": {
-        "test": ""
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/zhouhuafei/luck-draw_scroll.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/zhouhuafei/luck-draw_scroll/issues"
-    },
-    "homepage": "https://github.com/zhouhuafei/luck-draw_scroll#readme"
+  "name": "luck-draw_scroll",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhouhuafei/luck-draw_scroll.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhouhuafei/luck-draw_scroll/issues"
+  },
+  "homepage": "https://github.com/zhouhuafei/luck-draw_scroll#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2"
+  }
 }
