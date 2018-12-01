@@ -51,48 +51,53 @@ class Game {
                 return;
             }
             fnHandleMove();
-            transparentShow();
-            $.ajax({
-                url: '/luck-draw_scroll/dist/views/index.html', // 待续...
-                method: 'get', // 待续...
-                data: {
-                    tel: $tel.val(),
-                },
-                // dataType: 'jsonp', // 待续...
-                success: function (res) {
-                    const level = 3; // 待续...
-                    // const remainder = response.remainder; // 待续...
-                    $btn.addClass('btn_active');
-                    if (remainder === 0) {
-                        messageShow('您今天的抽奖次数用完了!');
-                        transparentHide();
-                        return;
-                    }
-                    let levelResult = [];
-                    if (level === 0) { // 没中奖
-                        const noPrizeRandomOne = noPrize[randomNum(0, noPrize.length - 1)];
-                        levelResult = levelResult.concat(noPrizeRandomOne);
-                    } else {
-                        for (let i = 0; i < 3; i++) {
-                            levelResult.push(level);
+            transparentShow(); // 防止抽奖的时候点击到其他区域(也可以防止重复点击试试手气)。如果滚动中可以点击其他区域，则就注释掉这里以及下面的两处transparentHide()。
+            if (!isClick) {
+                isClick = true; // 防止重复点击试试手气，此处和transparentShow()功能重叠了，没删掉的原因是担心不需要transparentShow()这个功能。
+                $.ajax({
+                    url: '/luck-draw_scroll/dist/views/index.html', // 待续...
+                    method: 'get', // 待续...
+                    data: {
+                        tel: $tel.val(),
+                    },
+                    // dataType: 'jsonp', // 待续...
+                    success: function (res) {
+                        const level = 3; // 待续...
+                        // const remainder = response.remainder; // 待续...
+                        $btn.addClass('btn_active');
+                        if (remainder === 0) {
+                            messageShow('您今天的抽奖次数用完了!');
+                            isClick = false;
+                            transparentHide();
+                            return;
                         }
-                    }
-                    selected(levelResult, remainder);
-                    fnLampMove();
-                    setTimeout(function () {
-                        transparentHide();
-                        if (level === 0) { // 未中奖
-                            messageShow('未中奖!');
+                        let levelResult = [];
+                        if (level === 0) { // 没中奖
+                            const noPrizeRandomOne = noPrize[randomNum(0, noPrize.length - 1)];
+                            levelResult = levelResult.concat(noPrizeRandomOne);
                         } else {
-                            luckShow();
+                            for (let i = 0; i < 3; i++) {
+                                levelResult.push(level);
+                            }
                         }
-                        fnLampStop();
-                        fnHandleStop();
-                    }, 3400);
-                    remainder--; // 删除待续...
-                    $remainderNum.html(remainder);
-                },
-            });
+                        selected(levelResult, remainder);
+                        fnLampMove();
+                        setTimeout(function () {
+                            isClick = false;
+                            transparentHide();
+                            if (level === 0) { // 未中奖
+                                messageShow('未中奖!');
+                            } else {
+                                luckShow();
+                            }
+                            fnLampStop();
+                            fnHandleStop();
+                        }, 3400);
+                        remainder--; // 删除待续...
+                        $remainderNum.html(remainder);
+                    },
+                });
+            }
         });
 
         // css中修改message的样式。待续...
