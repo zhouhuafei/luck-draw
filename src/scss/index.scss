@@ -117,6 +117,11 @@ html, body, .g-wrap {
     justify-content: center;
     flex-direction: column;
     color: #ffffff;
+    &.btn_active {
+        .btn-remainder {
+            display: block;
+        }
+    }
 }
 
 .btn-text {
@@ -127,6 +132,7 @@ html, body, .g-wrap {
 .btn-remainder {
     font-size: px2rem(12);
     margin-top: px2rem(4);
+    display: none;
 }
 
 .rule-btn {

@@ -17,6 +17,7 @@ class Game {
         const $remainderNum = $('.btn-remainder-num');
         const $message = $('.message');
         const $luck = $('.luck');
+        const $btn = $('.btn');
         const $transparent = $('.transparent');
         const $tel = $('.tel');
         const $rule = $('.rule');
@@ -36,6 +37,9 @@ class Game {
         });
         $('.rule-btn').on('click', function () {
             $rule.addClass('rule_show');
+        });
+        $('.rule-close').on('click', function () {
+            $rule.removeClass('rule_show');
         });
         $('.handle-btn,.btn').on('click', function () {
             if (remainder === 0) {
@@ -59,6 +63,7 @@ class Game {
                     success: function (res) {
                         const level = 3; // 待续...
                         // const remainder = response.remainder; // 待续...
+                        $btn.addClass('btn_active');
                         if (remainder === 0) {
                             messageShow('您今天的抽奖次数用完了!');
                             isClick = false;
