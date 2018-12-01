@@ -17,6 +17,7 @@ class Game {
         const $remainderNum = $('.btn-remainder-num');
         const $message = $('.message');
         const $luck = $('.luck');
+        const $luckGift = $('.luck-gift');
         const $btn = $('.btn');
         const $transparent = $('.transparent');
         const $tel = $('.tel');
@@ -89,6 +90,7 @@ class Game {
                                 messageShow('未中奖!');
                             } else {
                                 luckShow();
+                                $luckGift.html('开业好礼');
                             }
                             fnLampStop();
                             fnHandleStop();
