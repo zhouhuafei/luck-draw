@@ -168,7 +168,7 @@ html, body, .g-wrap {
 .message {
     box-sizing: border-box;
     text-align: center;
-    background: rgba(255, 0, 0, 0.8);
+    background: rgba(167, 22, 38, 0.9);
     width: px2rem(238);
     padding: px2rem(30);
     line-height: px2rem(20);
@@ -189,17 +189,17 @@ html, body, .g-wrap {
 .message-close {
     width: px2rem(12);
     height: px2rem(12);
-    background: url("../images/close.png") center center no-repeat;
+    background: url("../images/close_small.png") center center no-repeat;
     background-size: cover;
     position: absolute;
-    right: px2rem(4);
-    top: px2rem(4);
+    right: px2rem(6);
+    top: px2rem(6);
 }
 
 .luck {
     box-sizing: border-box;
     text-align: center;
-    background: rgba(255, 0, 0, 0.8);
+    background: rgba(167, 22, 38, 0.9);
     width: px2rem(298);
     padding: px2rem(30);
     line-height: px2rem(20);
@@ -218,13 +218,13 @@ html, body, .g-wrap {
 }
 
 .luck-close {
-    width: px2rem(12);
-    height: px2rem(12);
-    background: url("../images/close.png") center center no-repeat;
+    width: px2rem(14);
+    height: px2rem(14);
+    background: url("../images/close_big.png") center center no-repeat;
     background-size: cover;
     position: absolute;
-    right: px2rem(4);
-    top: px2rem(4);
+    right: px2rem(6);
+    top: px2rem(6);
 }
 
 .luck-title {
