@@ -17,6 +17,7 @@ class Game {
         const $remainderNum = $('.btn-remainder-num');
         const $message = $('.message');
         const $luck = $('.luck');
+        const $transparent = $('.transparent');
         const $tel = $('.tel');
         const $rule = $('.rule');
         const prizeH = 267 / 2; // 一个奖品的高度
@@ -102,11 +103,12 @@ class Game {
 
         function luckShow() {
             $luck.addClass('luck_show');
-
+            $transparent.addClass('transparent_show');
         }
 
         function luckHide() {
             $luck.removeClass('luck_show');
+            $transparent.removeClass('transparent_show');
         }
 
         function messageShow(text) {
