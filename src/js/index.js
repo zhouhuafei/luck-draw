@@ -100,7 +100,6 @@ class Game {
             }
         });
 
-        // css中修改message的样式。待续...
         $('.message-close').on('click', function () {
             messageHide();
         });
