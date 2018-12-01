@@ -1,10 +1,14 @@
+@import "../scss-config/config";
+
 * {
     margin: 0;
     padding: 0;
+    line-height: 1;
 }
 
 html, body, .g-wrap {
     height: 100%;
+    font-family: "Helvetica Neue", "Helvetica", "Microsoft YaHei", "微软雅黑", "PingFang SC", "Hiragino Sans GB", "SimSun", "Arial", "sans-serif";
 }
 
 .g-wrap {
@@ -22,9 +26,9 @@ html, body, .g-wrap {
 .prize {
     display: flex;
     overflow: hidden;
-    height: 2.67rem;
-    width: 5.10rem;
-    margin: 4.14rem auto 0;
+    height: px2rem(267/2);
+    width: px2rem(510/2);
+    margin: px2rem(414/2) auto 0;
 }
 
 .prize-item {
@@ -43,20 +47,21 @@ html, body, .g-wrap {
     &:nth-of-type(3) {
         transition-delay: 0.4s;
     }
+    $base: 2.67;
     &.prize-item_selected0 {
-        background-position: 0 -40.05rem;
+        background-position: 0 px2rem(-$base*15+$base*0);
     }
     &.prize-item_selected1 {
-        background-position: 0 -42.72rem;
+        background-position: 0 px2rem(-$base*15+$base*1);
     }
     &.prize-item_selected2 {
-        background-position: 0 -45.39rem;
+        background-position: 0 px2rem(-$base*15+$base*2);
     }
     &.prize-item_selected3 {
-        background-position: 0 -48.06rem;
+        background-position: 0 px2rem(-$base*15+$base*3);
     }
     &.prize-item_selected4 {
-        background-position: 0 -50.73rem;
+        background-position: 0 px2rem(-$base*15+$base*4);
     }
 }
 
