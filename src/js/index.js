@@ -101,11 +101,9 @@ class Game {
                 });
             }
         });
-
         $('.message-close').on('click', function () {
             messageHide();
         });
-
         $('.luck-close').on('click', function () {
             luckHide();
         });
