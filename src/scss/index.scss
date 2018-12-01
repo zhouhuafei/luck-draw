@@ -82,6 +82,7 @@ html, body, .g-wrap {
     top: px2rem(160);
     width: px2rem(60);
     height: px2rem(160);
+    background: rgba(0, 0, 0, .4);
 }
 
 .tel {
@@ -104,6 +105,7 @@ html, body, .g-wrap {
     &::-webkit-input-placeholder {
         color: #d0b999;
     }
+    background: rgba(0, 0, 0, .4);
 }
 
 .btn {
@@ -117,6 +119,7 @@ html, body, .g-wrap {
     justify-content: center;
     flex-direction: column;
     color: #ffffff;
+    background: rgba(0, 0, 0, .4);
 }
 
 .btn-text {
@@ -135,6 +138,7 @@ html, body, .g-wrap {
     top: px2rem(542);
     width: px2rem(99);
     height: px2rem(30);
+    background: rgba(0, 0, 0, .4);
 }
 
 .rule {
@@ -153,8 +157,37 @@ html, body, .g-wrap {
 }
 
 .rule-close {
-    width: px2rem(20);
-    height: px2rem(20);
-    background: rgba(0, 0, 0, 0.4);
-    right: 0;
+    width: px2rem(40);
+    height: px2rem(40);
+    right: px2rem(43);
+    top: px2rem(108);
+    position: absolute;
+    background: rgba(0, 0, 0, .4);
+}
+
+.message {
+    box-sizing: border-box;
+    text-align: center;
+    background: rgba(255, 0, 0, 0.8);
+    width: px2rem(218);
+    padding: px2rem(20);
+    line-height: px2rem(20);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: px2rem(14);
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: px2rem(10);
+}
+
+.message-close {
+    width: px2rem(12);
+    height: px2rem(12);
+    background: url("../images/close.png") center center no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: px2rem(4);
+    top: px2rem(4);
 }
