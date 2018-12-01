@@ -174,8 +174,8 @@ html, body, .g-wrap {
     line-height: px2rem(20);
     position: fixed;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 42%;
+    transform: translateX(-50%);
     font-size: px2rem(14);
     font-weight: bold;
     color: #ffffff;
@@ -200,7 +200,7 @@ html, body, .g-wrap {
     box-sizing: border-box;
     text-align: center;
     background: rgba(255, 0, 0, 0.8);
-    width: px2rem(300);
+    width: px2rem(298);
     padding: px2rem(30);
     line-height: px2rem(20);
     position: fixed;
