@@ -64,7 +64,6 @@ class Game {
                     success: function (res) {
                         const level = 3; // 待续...
                         // const remainder = response.remainder; // 待续...
-                        $btn.addClass('btn_active');
                         if (remainder === 0) {
                             messageShow('您今天的抽奖次数用完了!');
                             isClick = false;
@@ -85,6 +84,7 @@ class Game {
                         setTimeout(function () {
                             isClick = false;
                             transparentHide();
+                            $btn.addClass('btn_active');
                             if (level === 0) { // 未中奖
                                 messageShow('未中奖!');
                             } else {
