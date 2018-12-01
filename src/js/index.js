@@ -51,50 +51,48 @@ class Game {
                 return;
             }
             fnHandleMove();
-            if (!isClick) {
-                isClick = true;
-                $.ajax({
-                    url: '/luck-draw_scroll/dist/views/index.html', // 待续...
-                    method: 'get', // 待续...
-                    data: {
-                        tel: $tel.val(),
-                    },
-                    // dataType: 'jsonp', // 待续...
-                    success: function (res) {
-                        const level = 3; // 待续...
-                        // const remainder = response.remainder; // 待续...
-                        $btn.addClass('btn_active');
-                        if (remainder === 0) {
-                            messageShow('您今天的抽奖次数用完了!');
-                            isClick = false;
-                            return;
+            transparentShow();
+            $.ajax({
+                url: '/luck-draw_scroll/dist/views/index.html', // 待续...
+                method: 'get', // 待续...
+                data: {
+                    tel: $tel.val(),
+                },
+                // dataType: 'jsonp', // 待续...
+                success: function (res) {
+                    const level = 3; // 待续...
+                    // const remainder = response.remainder; // 待续...
+                    $btn.addClass('btn_active');
+                    if (remainder === 0) {
+                        messageShow('您今天的抽奖次数用完了!');
+                        transparentHide();
+                        return;
+                    }
+                    let levelResult = [];
+                    if (level === 0) { // 没中奖
+                        const noPrizeRandomOne = noPrize[randomNum(0, noPrize.length - 1)];
+                        levelResult = levelResult.concat(noPrizeRandomOne);
+                    } else {
+                        for (let i = 0; i < 3; i++) {
+                            levelResult.push(level);
                         }
-                        let levelResult = [];
-                        if (level === 0) { // 没中奖
-                            const noPrizeRandomOne = noPrize[randomNum(0, noPrize.length - 1)];
-                            levelResult = levelResult.concat(noPrizeRandomOne);
+                    }
+                    selected(levelResult, remainder);
+                    fnLampMove();
+                    setTimeout(function () {
+                        transparentHide();
+                        if (level === 0) { // 未中奖
+                            messageShow('未中奖!');
                         } else {
-                            for (let i = 0; i < 3; i++) {
-                                levelResult.push(level);
-                            }
+                            luckShow();
                         }
-                        selected(levelResult, remainder);
-                        fnLampMove();
-                        setTimeout(function () {
-                            if (level === 0) { // 未中奖
-                                messageShow('未中奖!');
-                            } else {
-                                luckShow();
-                            }
-                            fnLampStop();
-                            fnHandleStop();
-                            isClick = false;
-                        }, 3400);
-                        remainder--; // 删除待续...
-                        $remainderNum.html(remainder);
-                    },
-                });
-            }
+                        fnLampStop();
+                        fnHandleStop();
+                    }, 3400);
+                    remainder--; // 删除待续...
+                    $remainderNum.html(remainder);
+                },
+            });
         });
 
         // css中修改message的样式。待续...
@@ -108,18 +106,27 @@ class Game {
 
         function luckShow() {
             $luck.addClass('luck_show');
-            $transparent.addClass('transparent_show');
+            transparentShow();
         }
 
         function luckHide() {
             $luck.removeClass('luck_show');
+            transparentHide();
+        }
+
+        function transparentShow() {
+            $transparent.addClass('transparent_show');
+        }
+
+        function transparentHide() {
             $transparent.removeClass('transparent_show');
         }
 
         function messageShow(text) {
             $message.addClass('message_show');
             $message.find('.message-info').html(text);
-            setTimeout(function () {
+            clearTimeout(messageShow.timer);
+            messageShow.timer = setTimeout(function () {
                 messageHide();
             }, 3000);
         }
