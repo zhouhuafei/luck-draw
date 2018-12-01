@@ -154,6 +154,7 @@ class Game {
 
         function fnLampStop() {
             clearInterval(timer);
+            domLamp.classList.remove('lamp_selected');
         }
 
         function fnHandleMove() {

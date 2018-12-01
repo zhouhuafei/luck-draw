@@ -40,13 +40,13 @@ html, body, .g-wrap {
     background-position: 0 0;
     transition: 3s ease-out;
     &:nth-of-type(1) {
-        transition-delay: 0s;
+        transition-delay: 0.4s;
     }
     &:nth-of-type(2) {
         transition-delay: 0.2s;
     }
     &:nth-of-type(3) {
-        transition-delay: 0.4s;
+        transition-delay: 0s;
     }
 }
 
@@ -206,15 +206,17 @@ html, body, .g-wrap {
     line-height: px2rem(20);
     position: fixed;
     left: 50%;
-    top: 26%;
+    top: -1000px;
     transform: translateX(-50%);
     font-size: px2rem(14);
     font-weight: bold;
     color: #ffffff;
     border-radius: px2rem(10);
-    display: none;
+    opacity: 0;
     &.luck_show {
-        display: block;
+        transition: 0.8s cubic-bezier(0, 0, 0, 1.25);
+        top: 26%;
+        opacity: 1;
     }
 }
 
