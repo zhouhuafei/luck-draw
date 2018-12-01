@@ -15,6 +15,8 @@ class Game {
         const domLamp = document.querySelector('.lamp');
         const domHandle = document.querySelector('.handle');
         const $remainderNum = $('.btn-remainder-num');
+        const $message = $('.message');
+        const $luck = $('.luck');
         const $tel = $('.tel');
         const $rule = $('.rule');
         const prizeH = 267 / 2; // 一个奖品的高度
@@ -36,11 +38,11 @@ class Game {
         });
         $('.handle-btn,.btn').on('click', function () {
             if (remainder === 0) {
-                alert('您今天的抽奖次数用完了!');
+                messageShow('您今天的抽奖次数用完了!');
                 return;
             }
             if (!(/1\d{10}/.test($tel.val()))) {
-                alert('请输入正确的11位手机号码!');
+                messageShow('请输入正确的11位手机号码!');
                 return;
             }
             fnHandleMove();
@@ -57,7 +59,7 @@ class Game {
                         const level = 3; // 待续...
                         // const remainder = response.remainder; // 待续...
                         if (remainder === 0) {
-                            alert('您今天的抽奖次数用完了!');
+                            messageShow('您今天的抽奖次数用完了!');
                             isClick = false;
                             return;
                         }
@@ -73,6 +75,11 @@ class Game {
                         selected(levelResult, remainder);
                         fnLampMove();
                         setTimeout(function () {
+                            if (level === 0) { // 未中奖
+                                messageShow('未中奖!');
+                            } else {
+                                luckShow();
+                            }
                             fnLampStop();
                             fnHandleStop();
                             isClick = false;
@@ -83,6 +90,36 @@ class Game {
                 });
             }
         });
+
+        // css中修改message的样式。待续...
+        $('.message-close').on('click', function () {
+            messageHide();
+        });
+
+        $('.luck-close').on('click', function () {
+            luckHide();
+        });
+
+        function luckShow() {
+            $luck.addClass('luck_show');
+
+        }
+
+        function luckHide() {
+            $luck.removeClass('luck_show');
+        }
+
+        function messageShow(text) {
+            $message.addClass('message_show');
+            $message.find('.message-info').html(text);
+            setTimeout(function () {
+                messageHide();
+            }, 3000);
+        }
+
+        function messageHide() {
+            $message.removeClass('message_show');
+        }
 
         function selected(levelResult, remainder) {
             domItems.forEach(function (v, i) {

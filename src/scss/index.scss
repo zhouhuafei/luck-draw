@@ -169,17 +169,21 @@ html, body, .g-wrap {
     box-sizing: border-box;
     text-align: center;
     background: rgba(255, 0, 0, 0.8);
-    width: px2rem(218);
-    padding: px2rem(20);
+    width: px2rem(238);
+    padding: px2rem(30);
     line-height: px2rem(20);
     position: fixed;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 38%;
+    transform: translateX(-50%);
     font-size: px2rem(14);
     font-weight: bold;
     color: #ffffff;
     border-radius: px2rem(10);
+    display: none;
+    &.message_show {
+        display: block;
+    }
 }
 
 .message-close {
@@ -190,4 +194,47 @@ html, body, .g-wrap {
     position: absolute;
     right: px2rem(4);
     top: px2rem(4);
+}
+
+.luck {
+    box-sizing: border-box;
+    text-align: center;
+    background: rgba(255, 0, 0, 0.8);
+    width: px2rem(300);
+    padding: px2rem(30);
+    line-height: px2rem(20);
+    position: fixed;
+    left: 50%;
+    top: 38%;
+    transform: translateX(-50%);
+    font-size: px2rem(14);
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: px2rem(10);
+    display: none;
+    &.luck_show {
+        display: block;
+    }
+}
+
+.luck-close {
+    width: px2rem(12);
+    height: px2rem(12);
+    background: url("../images/close.png") center center no-repeat;
+    background-size: cover;
+    position: absolute;
+    right: px2rem(4);
+    top: px2rem(4);
+}
+
+.luck-title {
+    font-size: px2rem(20);
+    font-weight: bold;
+    margin-bottom: px2rem(10);
+}
+
+.luck-content {
+    margin-top: px2rem(30);
+    font-size: px2rem(12);
+    line-height: px2rem(18);
 }
