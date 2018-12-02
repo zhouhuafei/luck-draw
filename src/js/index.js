@@ -51,19 +51,29 @@ class Game {
                 messageShow('请输入正确的11位手机号码!');
                 return;
             }
-            fnHandleMove();
             transparentShow(); // 防止抽奖的时候点击到其他区域(也可以防止重复点击试试手气)。如果滚动中可以点击其他区域，则就注释掉这里以及下面的两处transparentHide()。
             if (!isClick) {
                 isClick = true; // 防止重复点击试试手气，此处和transparentShow()功能重叠了，没删掉的原因是担心不需要transparentShow()这个功能。
                 setTimeout(function () { // 假设接口400毫秒之后返回了结果
-                    const level = randomNum(1, 5); // 读取是否中奖
-                    const remainder = randomNum(0, 2); // 读取剩余次数
-                    if (remainder === 0) {
-                        messageShow('您今天的抽奖次数用完了!');
+                    const prizeId = randomNum(0, 5); // 奖品等级1-5，0未中奖
+                    const response = {
+                        left_lottery_count: randomNum(0, 2),
+                        message: '成功',
+                        status: 'success',
+                        prizeInfo: {
+                            prize_id: prizeId, prize_name: `${prizeId === 0 ? '未中奖' : `${prizeId}等奖`}`,
+                        },
+                    };
+                    if (response.status === 'failure') {
+                        messageShow(response.message);
                         isClick = false;
                         transparentHide();
                         return;
                     }
+                    const prizeInfo = response.prizeInfo;
+                    const level = prizeInfo.prize_id;
+                    const levelName = prizeInfo.prize_name;
+                    remainder = response.left_lottery_count;
                     let levelResult = [];
                     if (level === 0) { // 没中奖
                         const noPrizeRandomOne = noPrize[randomNum(0, noPrize.length - 1)];
@@ -73,22 +83,25 @@ class Game {
                             levelResult.push(level);
                         }
                     }
-                    selected(levelResult, remainder);
-                    fnLampMove();
+                    fnHandleMove();
                     setTimeout(function () {
-                        isClick = false;
-                        transparentHide();
-                        $remainderNum.html(remainder);
-                        $btn.addClass('btn_active');
-                        if (level === 0) { // 未中奖
-                            messageShow('未中奖!');
-                        } else {
-                            luckShow();
-                            $luckGift.html('开业好礼');
-                        }
-                        fnLampStop();
-                        fnHandleStop();
-                    }, 3400);
+                        selected(levelResult, remainder);
+                        fnLampMove();
+                        setTimeout(function () {
+                            isClick = false;
+                            transparentHide();
+                            fnLampStop();
+                            fnHandleStop();
+                            $remainderNum.html(remainder);
+                            $btn.addClass('btn_active');
+                            if (level === 0) { // 未中奖
+                                messageShow('未中奖!');
+                            } else {
+                                luckShow();
+                                $luckGift.html(levelName);
+                            }
+                        }, 3400);
+                    }, 200);
                 }, 400);
             }
         });
