@@ -64,7 +64,7 @@ class Game {
                             prize_id: prizeId, prize_name: `${prizeId === 0 ? '未中奖' : `${prizeId}等奖`}`,
                         },
                     };
-                    if (response.status === 'failure') {
+                    if (response.status === 'failure') { // 抽奖次数用完了，手机验证之类的，都在failure里交给后端处理。
                         messageShow(response.message);
                         isClick = false;
                         transparentHide();
@@ -73,7 +73,8 @@ class Game {
                     const prizeInfo = response.prizeInfo;
                     const level = prizeInfo.prize_id;
                     const levelName = prizeInfo.prize_name;
-                    remainder = response.left_lottery_count;
+                    // remainder = response.left_lottery_count; // 线上用这个
+                    remainder -= 1; // 本地模拟测试先这个
                     let levelResult = [];
                     if (level === 0) { // 没中奖
                         const noPrizeRandomOne = noPrize[randomNum(0, noPrize.length - 1)];
